@@ -14,7 +14,7 @@ def paginate_questions(request, selection):
     start = (page - 1) * QUESTIONS_PER_PAGE
     end = start + QUESTIONS_PER_PAGE
 
-    questions = [book.format() for question in selection]
+    questions = [question.format() for question in selection]
     current_questions = questions[start:end]
 
     return current_questions
@@ -24,10 +24,17 @@ def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__)
     setup_db(app)
-    CORS(app)
+
 
     '''
   @TODO: Set up CORS. Allow '*' for origins. Delete the sample route after completing the TODOs
+  '''
+    CORS(app, resource={'/': {'origins': '*'}})
+
+
+
+    '''
+  @TODO: Use the after_request decorator to set Access-Control-Allow
   '''
 
     @app.after_request
@@ -35,10 +42,6 @@ def create_app(test_config=None):
         response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization,true')
         response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
         return response
-
-    '''
-  @TODO: Use the after_request decorator to set Access-Control-Allow
-  '''
 
     '''
   @TODO: 
@@ -58,12 +61,33 @@ def create_app(test_config=None):
   including pagination (every 10 questions). 
   This endpoint should return a list of questions, 
   number of total questions, current category, categories. 
+  
 
   TEST: At this point, when you start the application
   you should see questions and categories generated,
   ten questions per page and pagination at the bottom of the screen for three pages.
   Clicking on the page numbers should update the questions. 
   '''
+
+    @app.route('/questions')
+    def retrieve_questions():
+        selection = Question.query.order_by(Question.id).all()
+        current_questions = paginate_questions(request, selection)
+
+        categories = Category.query.all()
+        categories_dict = {}
+        for category in categories:
+            categories_dict[category.id] = category.type
+
+        if len(current_questions) == 0:
+            abort(404)
+
+        return jsonify({
+            'success': True,
+            'questions': current_questions,
+            'total_questions': len(selection),
+            'categories': categories_dict,
+        })
 
     '''
   @TODO: 

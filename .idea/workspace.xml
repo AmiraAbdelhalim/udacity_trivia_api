@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f1fdd36f-8b0c-42e0-bcc4-8320f9dcae26" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/backend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flaskr/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskr/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,6 +24,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -40,9 +45,13 @@
       <screen x="49" y="27" width="1317" height="741" />
     </state>
     <state x="298" y="27" width="809" height="741" key="CommitChangelistDialog2/49.27.1317.741@49.27.1317.741" timestamp="1601924704418" />
-    <state x="363" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1601923036486">
+    <state x="196" y="31" key="SettingsEditor" timestamp="1601924806209">
       <screen x="49" y="27" width="1317" height="741" />
     </state>
-    <state x="363" y="224" key="com.intellij.ide.util.TipDialog/49.27.1317.741@49.27.1317.741" timestamp="1601923036486" />
+    <state x="196" y="31" key="SettingsEditor/49.27.1317.741@49.27.1317.741" timestamp="1601924806209" />
+    <state x="363" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1601925299152">
+      <screen x="49" y="27" width="1317" height="741" />
+    </state>
+    <state x="363" y="224" key="com.intellij.ide.util.TipDialog/49.27.1317.741@49.27.1317.741" timestamp="1601925299152" />
   </component>
 </project>
