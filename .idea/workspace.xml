@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f1fdd36f-8b0c-42e0-bcc4-8320f9dcae26" name="Default Changelist" comment="" />
+    <list default="true" id="f1fdd36f-8b0c-42e0-bcc4-8320f9dcae26" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/flaskr/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskr/__init__.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1iTE6labghT5hk1OoDtT16mz1iM" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -30,6 +36,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="298" y="27" width="809" height="741" key="CommitChangelistDialog2" timestamp="1601924704418">
+      <screen x="49" y="27" width="1317" height="741" />
+    </state>
+    <state x="298" y="27" width="809" height="741" key="CommitChangelistDialog2/49.27.1317.741@49.27.1317.741" timestamp="1601924704418" />
     <state x="363" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1601923036486">
       <screen x="49" y="27" width="1317" height="741" />
     </state>
