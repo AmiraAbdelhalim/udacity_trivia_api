@@ -123,7 +123,7 @@ def create_app(test_config=None):
   Create an endpoint to POST a new question, 
   which will require the question and answer text, 
   category, and difficulty score.
-
+    
   TEST: When you submit a question on the "Add" tab, 
   the form will clear and the question will appear at the end of the last page
   of the questions list in the "List" tab.  
@@ -139,6 +139,57 @@ def create_app(test_config=None):
   only question that include that string within their question. 
   Try using the word "title" to start. 
   '''
+
+    @app.route('/questions', methods=['POST'])
+    def create_question():
+        '''handles create new question or search'''
+
+        body = request.get_json()
+        if body.get('searchTerm'):
+            search_term = body.get('searchTerm')
+            selection = Question.query.filter(
+                Question.question.ilike(f'%{search_term}%')
+            ).all()
+
+            if len(selection) == 0:
+                abort(404)
+
+            paginated_questions = paginate_questions(request, selection)
+
+            return jsonify({
+                'success': True,
+                'questions': paginated_questions,
+                'total_questions': len(selection)
+            })
+        else:
+            question = body.get('question')
+            answer = body.get('answer')
+            difficulty = body.get('difficulty')
+            category = body.get('category')
+
+            if question is None or answer is None \
+                    or difficulty is None or category is None:
+                abort(422)
+
+            try:
+                question = Question(
+                    question=question, answer=answer,
+                    difficulty=difficulty, category=category
+                )
+                question.insert()
+
+                selection = Question.query.order_by(Question.id).all()
+                paginated_questions = paginate_questions(request, selection)
+
+                return jsonify({
+                    'success': True,
+                    'created': question.id,
+                    'created_question': question.question,
+                    'questions': paginated_questions,
+                    'total_questions': len(selection)
+                })
+            except:
+                abort(422)
 
     '''
   @TODO: 
