@@ -186,6 +186,7 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data['success'], False)
         self.assertEqual(data['message'], 'Bad Request')
 
+
 # Make the tests conveniently executable
 if __name__ == "__main__":
     unittest.main()
