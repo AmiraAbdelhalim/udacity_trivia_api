@@ -200,6 +200,23 @@ def create_app(test_config=None):
   category to be shown. 
   '''
 
+    @app.route('/categories/<int:id>/questions')
+    def get_questions_by_category_id(id):
+        category = Category.query.filter_by(id=id).one_or_none()
+
+        if category is None:
+            abort(400)
+
+        selection = Question.query.filter_by(category=category.id).all()
+        paginated_questions = paginate_questions(request, selection)
+
+        return  jsonify({
+            'success': True,
+            'questions': paginated_questions,
+            'total_questions': len(selection),
+            'current_category': category.type
+        })
+
     '''
   @TODO: 
   Create a POST endpoint to get questions to play the quiz. 
