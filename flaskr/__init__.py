@@ -210,7 +210,7 @@ def create_app(test_config=None):
         selection = Question.query.filter_by(category=category.id).all()
         paginated_questions = paginate_questions(request, selection)
 
-        return  jsonify({
+        return jsonify({
             'success': True,
             'questions': paginated_questions,
             'total_questions': len(selection),
@@ -228,7 +228,46 @@ def create_app(test_config=None):
   one question at a time is displayed, the user is allowed to answer
   and shown whether they were correct or not. 
   '''
+    @app.route('/quizzes', methods=['POST'])
+    def get_quiz_question():
+        body = request.get_json()
+        previous_question = body.get('previous_questions')
+        category = body.get('quiz_category')
 
+        if previous_question is None or category is None:
+            abort(400)
+
+        if category['id'] == 0:
+            questions = Question.query.all()
+        else:
+            questions = Question.query.filter_by(category=category['id']).all()
+
+        total = len(questions)
+
+        def get_random_question():
+            return questions[random.randrange(0, len(questions),1)]
+
+        def check_if_used(question):
+            used = False
+            for q in previous_question:
+                if q == question.id:
+                    used = True
+            return used
+
+        random_question = get_random_question()
+
+        while check_if_used(random_question):
+            random_question = get_random_question()
+
+            if len(previous_question) == total:
+                return jsonify({
+                    'success': True
+                })
+
+        return jsonify({
+            'success': True,
+            'question': random_question.format()
+        })
     '''
   @TODO: 
   Create error handlers for all expected errors 
